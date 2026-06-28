@@ -1,0 +1,312 @@
+{
+  "info": {
+    "_postman_id": "8b9e6da4-bbbf-4c7b-9c71-cb868dfd6545",
+    "name": "Docspace API Collection",
+    "description": "API collection for testing the Docspace collaborative editor backend endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/users",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login or Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"manish@example.com\",\n  \"name\": \"Manish Mahto\"\n}"
+            },
+            "url": {
+              "raw": "{{host}}/users/login",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Documents",
+      "item": [
+        {
+          "name": "Get User Workspace",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/documents?user_id={{user_id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents"
+              ],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Project Overview\",\n  \"owner_id\": \"{{user_id}}\",\n  \"content_html\": \"<h1>Project Overview</h1><p>This is a new document created via API.</p>\"\n}"
+            },
+            "url": {
+              "raw": "{{host}}/documents",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Document",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/documents/{{document_id}}?user_id={{user_id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents",
+                "{{document_id}}"
+              ],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "{{user_id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Document",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Project Overview\",\n  \"content_html\": \"<h1>Updated Project Overview</h1><p>This content has been modified.</p>\"\n}"
+            },
+            "url": {
+              "raw": "{{host}}/documents/{{document_id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents",
+                "{{document_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Import Document File",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "owner_id",
+                  "value": "{{user_id}}",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Imported Specs",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{host}}/documents/import",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents",
+                "import"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sharing",
+      "item": [
+        {
+          "name": "List Document Shares",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/documents/{{document_id}}/shares",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents",
+                "{{document_id}}",
+                "shares"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Collaborator Share",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"22222222-2222-4222-8222-222222222222\"\n}"
+            },
+            "url": {
+              "raw": "{{host}}/documents/{{document_id}}/shares",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents",
+                "{{document_id}}",
+                "shares"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Collaborator Share",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/documents/{{document_id}}/shares/22222222-2222-4222-8222-222222222222",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents",
+                "{{document_id}}",
+                "shares",
+                "22222222-2222-4222-8222-222222222222"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Attachments",
+      "item": [
+        {
+          "name": "Upload Attachment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{host}}/documents/{{document_id}}/attachments",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "documents",
+                "{{document_id}}",
+                "attachments"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
