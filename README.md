@@ -25,11 +25,10 @@ A lightweight, collaborative, full-stack document editor inspired by Google Docs
 ### 1. Prerequisite: Environment Setup
 Ensure you have Node.js (v18+) and npm installed.
 
-*   **Backend Environment**: In the `backend/.env` file:
+*   **Backend Environment**: Create a `backend/.env` file with your database connection URL:
     ```env
-    DATABASE_URL='postgresql://neondb_owner:npg_cSH1FXxVPm4j@ep-mute-salad-adzhvo2d.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require'
+    DATABASE_URL='postgresql://<username>:<password>@<host>/<database>?sslmode=require'
     ```
-    *(A remote Neon database has already been configured for you in the repo)*.
 
 *   **Frontend Environment**: In the `frontend/.env` file:
     ```env
